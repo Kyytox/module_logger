@@ -1,0 +1,26 @@
+---
+version: 1
+formatters:
+    simple:
+        format: "%(name)s | [%(asctime)s] {%(filename)s:%(lineno)s} %(levelname)s - %(message)s"
+        datefmt: "%Y-%m-%d %H:%M:%S%z"
+handlers:
+    console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+        class: logging.handlers.RotatingFileHandler
+        formatter: simple
+        # filename: test.log
+        # maxBytes: 1073741824
+        # maxBytes: 5024
+        # backupCount: 3
+        # delay: true
+loggers:
+    console:
+        level: INFO
+        handlers: [console]
+    root:
+        level: INFO
+        handlers: [console, root]
